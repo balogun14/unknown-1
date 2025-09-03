@@ -1,25 +1,24 @@
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
-interface AppConfig{
+interface AppConfig {
   port: number;
-  databaseUrl: string
+  databaseUrl: string;
 }
 
 function loadConfig(): AppConfig {
   const config = {
-    port: parseInt(process.env.PORT?? '3000', 10),
-    databaseUrl: process.env.DATABASE_URL!
-  }
+    port: parseInt(process.env.PORT ?? '3000', 10),
+    databaseUrl: process.env.DATABASE_URL!,
+  };
 
-  if (!config.databaseUrl){
-    throw new Error('Missing important environment variables')
+  if (!config.databaseUrl) {
+    throw new Error('Missing important environment variables');
   }
-  return config
+  return config;
 }
 
+const config = loadConfig();
 
-const config = loadConfig()
-
-export default config
+export default config;
