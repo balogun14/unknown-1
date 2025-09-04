@@ -8,6 +8,20 @@
       "when": 1756924061580,
       "tag": "0000_eager_sauron",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1756965990659,
+      "tag": "0001_elite_meltdown",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1756969741127,
+      "tag": "0002_dear_talisman",
+      "breakpoints": true
     }
   ]
 }
