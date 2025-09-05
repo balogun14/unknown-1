@@ -8,7 +8,9 @@ export const event = pgTable('events', {
   description: text('description'),
   venue: varchar({ length: 255 }).notNull(),
   startDate: timestamp({ withTimezone: true, mode: 'date' }).notNull(),
-  createdBy: text('created_by').references(() => user.id),
+  createdBy: text('created_by').references(() => user.id, {
+    onDelete: 'cascade',
+  }),
   price: decimal().notNull(),
   createdAt: timestamp('created_at')
     .$defaultFn(() => /* @__PURE__ */ new Date())
