@@ -4,6 +4,7 @@ import { event } from '../../../db/schema/event';
 
 class EventService {
   async createEvent(data: typeof event.$inferInsert) {
+    data.startDate = new Date(data.startDate);
     const [newEvent] = await db.insert(event).values(data).returning();
     return newEvent;
   }
@@ -19,6 +20,16 @@ class EventService {
 
   async deleteEvent(eventId: string) {
     return await db.delete(event).where(eq(event.id, eventId));
+  }
+
+  async updateEvent(id: string, data: typeof event.$inferInsert) {
+    data.startDate = new Date(data.startDate);
+    const [result] = await db
+      .update(event)
+      .set(data)
+      .where(eq(event.id, id))
+      .returning();
+    return result;
   }
 }
 

@@ -3,12 +3,24 @@ import { db } from '../../../db';
 import { NextFunction, Request, Response } from 'express';
 import { eventService } from '../services/event-service';
 import {
+  BadRequest,
   HttpError,
+  InvalidInput,
   ResourceNotFound,
+  ServerError,
 } from '../../../middlewares/error-middleware';
-import { CreateEventDto } from '../types/event-types';
+import {
+  CreateEventDto,
+  createEventSchema,
+  UpdateEventDto,
+  updateEventSchema,
+} from '../types/event-types';
 
-export async function getAllEvents(req: Request, res: Response) {
+export async function getAllEvents(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const allEvents = await db
       .select({
@@ -27,10 +39,7 @@ export async function getAllEvents(req: Request, res: Response) {
       message: 'Events fetched successfully',
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Failed to get events',
-    });
+    next(new ServerError('Internal Server Error'));
   }
 }
 
@@ -73,7 +82,12 @@ export async function createEvent(
 ) {
   try {
     const eventReq: CreateEventDto = req.body.event;
-    eventReq.startDate = new Date(eventReq.startDate);
+
+    const result = createEventSchema.safeParse(eventReq);
+
+    if (!result.success) {
+      throw new InvalidInput('Invalid Input');
+    }
 
     const newEvent = await eventService.createEvent(eventReq);
     if (newEvent) {
@@ -84,11 +98,51 @@ export async function createEvent(
       });
     }
   } catch (error) {
-    res.status(400).json({ error });
+    next(error);
   }
 }
 
-export async function getUserEvents(req: Request, res: Response) {
+export async function updateEvent(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const { eventId } = req.params;
+  try {
+    const eventReq: UpdateEventDto = req.body.event;
+    const result = updateEventSchema.safeParse(eventReq);
+    if (!result.success) {
+      throw new InvalidInput('Invalid input');
+    }
+    const existingEvent = await eventService.getEventById(eventId!);
+
+    if (!existingEvent) {
+      throw new ResourceNotFound(`Event with id ${eventId} not found`);
+    }
+
+    const updatedEvent = await eventService.updateEvent(eventId!, eventReq);
+
+    if (!updatedEvent) {
+      throw new ServerError('Somthing went wrong');
+    }
+    res.status(200).json({
+      success: true,
+      message: 'Event updated successfully',
+      data: updatedEvent,
+    });
+  } catch (error) {
+    if (error instanceof InvalidInput) {
+      res.json({ error: error.cause });
+    } else {
+      next(error);
+    }
+  }
+}
+export async function getUserEvents(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const { userId } = req.params;
 
