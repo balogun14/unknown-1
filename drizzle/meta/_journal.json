@@ -43,6 +43,13 @@
       "when": 1757260973289,
       "tag": "0005_update-event-start-date-column-to-date",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1757321588415,
+      "tag": "0006_add-created_at-timestamp-to-bookings",
+      "breakpoints": true
     }
   ]
 }
