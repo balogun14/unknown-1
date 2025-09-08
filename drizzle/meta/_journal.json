@@ -29,6 +29,20 @@
       "when": 1757078163415,
       "tag": "0003_add_delete_cascade_to_event",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1757260189404,
+      "tag": "0004_update-event-start-date-column-to-string",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1757260973289,
+      "tag": "0005_update-event-start-date-column-to-date",
+      "breakpoints": true
     }
   ]
 }
