@@ -4,6 +4,7 @@ import pinoHttp from 'pino-http';
 import logger from './utils/logger';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
+import { rateLimit } from 'express-rate-limit';
 
 const swaggerOptions: swaggerJSDoc.Options = {
   definition: {
@@ -25,12 +26,20 @@ const swaggerOptions: swaggerJSDoc.Options = {
 
 const specs = swaggerJSDoc(swaggerOptions);
 
+const limiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 100,
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false,
+});
 const app: Application = express();
 app.use(
   pinoHttp({
     logger,
   })
 );
+
+app.use(limiter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use(express.json());
