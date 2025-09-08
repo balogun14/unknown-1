@@ -1,5 +1,11 @@
-import { decimal } from 'drizzle-orm/pg-core';
-import { pgTable, uuid, varchar, text, timestamp } from 'drizzle-orm/pg-core';
+import {
+  pgTable,
+  uuid,
+  varchar,
+  text,
+  timestamp,
+  decimal,
+} from 'drizzle-orm/pg-core';
 import { user } from './auth-schema';
 
 export const event = pgTable('events', {
