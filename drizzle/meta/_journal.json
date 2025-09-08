@@ -50,6 +50,20 @@
       "when": 1757321588415,
       "tag": "0006_add-created_at-timestamp-to-bookings",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1757340648415,
+      "tag": "0007_add-quantity-to-bookings",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1757357196771,
+      "tag": "0008_safe_mole_man",
+      "breakpoints": true
     }
   ]
 }
