@@ -4,7 +4,7 @@ import { user } from './auth-schema';
 import { booking } from './booking';
 
 export const ticket = pgTable('tickets', {
-  id: uuid('id').primaryKey(),
+  id: uuid('id').defaultRandom().primaryKey(),
   eventId: uuid('event_id')
     .notNull()
     .references(() => event.id, { onDelete: 'no action' }),
