@@ -1,0 +1,342 @@
+{
+  "info": {
+    "name": "events-ticketing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create event",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/events",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "events"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": {\n    \"name\": \"Inaugural lecture 2\",\n    \"description\": \"lecture\",\n    \"venue\": \"Victoria Island\",\n    \"startDate\": \"2025-09-04T06:42:21.014Z\",\n    \"price\": 20000,\n    \"createdBy\": \"2365yprsQaiMKd0O8JjtW2XnlighAtcA\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Get all events",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/events",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "events"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "Get users events",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/users/:userId/events",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "users",
+            ":userId",
+            "events"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "key": "userId",
+              "value": "2365yprsQaiMKd0O8JjtW2XnlighAtcA"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sign in as user",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/auth/sign-in/email",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "sign-in",
+            "email"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"jesseekoh@gmail.com\",\n  \"password\": \"password\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Sign out",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/auth/sign-out",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "sign-out"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "Sign up user",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/auth/sign-up/email",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "sign-up",
+            "email"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Jesse Ekoh-Ordan\",\n    \"email\": \"jesseekoh@gmail.com\", \n    \"password\": \"password\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Update an Event",
+      "event": [],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/events/:eventId",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "events",
+            ":eventId"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "key": "eventId",
+              "value": "0d62f6e0-5555-4a09-9e57-43e53493c8f6"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"event\": {\n    \"name\": \"Game jam\",\n    \"description\": \"lecture\",\n    \"venue\": \"Victoria Island\",\n    \"startDate\": \"2025-09-04T06:42:21.014Z\",\n    \"price\": 20000,\n    \"createdBy\": \"2365yprsQaiMKd0O8JjtW2XnlighAtcA\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Get event",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/events/:eventId",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "events",
+            ":eventId"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "key": "eventId",
+              "value": "0d62f6e0-5555-4a09-9e57-43e53493c8f6"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get User bookings",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/users/:userId/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "users",
+            ":userId",
+            "bookings"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "key": "userId",
+              "value": "2365yprsQaiMKd0O8JjtW2XnlighAtcA"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Book an event",
+      "event": [],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "",
+        "url": {
+          "raw": "http://localhost:5000/api/events/:eventId/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost:5000"
+          ],
+          "path": [
+            "api",
+            "events",
+            ":eventId",
+            "bookings"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "key": "eventId",
+              "value": "0d62f6e0-5555-4a09-9e57-43e53493c8f6"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"booking\": {\n    \"quantity\": 5\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "variable": []
+}
