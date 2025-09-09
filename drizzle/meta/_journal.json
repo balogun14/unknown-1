@@ -8,6 +8,62 @@
       "when": 1756924061580,
       "tag": "0000_eager_sauron",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1756965990659,
+      "tag": "0001_elite_meltdown",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1756969741127,
+      "tag": "0002_dear_talisman",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1757078163415,
+      "tag": "0003_add_delete_cascade_to_event",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1757260189404,
+      "tag": "0004_update-event-start-date-column-to-string",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1757260973289,
+      "tag": "0005_update-event-start-date-column-to-date",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1757321588415,
+      "tag": "0006_add-created_at-timestamp-to-bookings",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1757340648415,
+      "tag": "0007_add-quantity-to-bookings",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1757357196771,
+      "tag": "0008_safe_mole_man",
+      "breakpoints": true
     }
   ]
 }
