@@ -6,6 +6,7 @@ export const createEventSchema = z.object({
   venue: z.string().min(6),
   description: z.string().min(1).trim(),
   startDate: z.iso.datetime(),
+  availableTickets: z.number(),
   price: z.number().nonnegative(),
 });
 export const updateEventSchema = createEventSchema;

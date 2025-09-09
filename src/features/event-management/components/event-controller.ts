@@ -63,15 +63,6 @@ export async function getEventById(
     });
   } catch (error) {
     next(error);
-
-    // if (error instanceof HttpError) {
-    //   res.status(error.statusCode).json({
-    //     success: false,
-    //     message: error.message,
-    //   });
-    // } else {
-    //   res.status(500).json({ success: false, message: 'Some error occurred' });
-    // }
   }
 }
 
@@ -82,7 +73,7 @@ export async function createEvent(
 ) {
   try {
     const eventReq: CreateEventDto = req.body.event;
-
+    console.log(eventReq);
     const result = createEventSchema.safeParse(eventReq);
 
     if (!result.success) {
