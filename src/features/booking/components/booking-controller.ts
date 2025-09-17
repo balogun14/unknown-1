@@ -55,7 +55,7 @@ export async function createBooking(
 
     const tickets = await bookingService.createBooking(bookingData);
 
-    res.status(200).json({
+    res.status(201).json({
       success: true,
       data: tickets,
       message: 'successfully booked event',
@@ -103,7 +103,7 @@ export async function getUserBookings(
     if (user.id !== userId) {
       throw new Unauthorized('You cannot check another users records');
     }
-    const bookings = bookingService.getUserBookings(userId);
+    const bookings = await bookingService.getUserBookings(userId);
     res.status(200).json({
       success: true,
       data: bookings,
