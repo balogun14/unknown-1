@@ -26,7 +26,7 @@ const router: Router = Router();
  *       404:
  *         description: Booking not found
  */
-router.get('/bookings/:bookingId', requireAuth);
+// router.get('/bookings/:bookingId', requireAuth);
 
 /**
  * @swagger

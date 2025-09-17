@@ -4,6 +4,7 @@ import { eq, sql } from 'drizzle-orm';
 import { BookingInsert } from '../types/booking-types';
 import { event } from '../../../db/schema/event';
 import { ticket } from '../../../db/schema/ticket';
+import { ResourceNotFound } from '../../../middlewares/error-middleware';
 class BookingService {
   async createBooking(data: BookingInsert) {
     await db
@@ -31,11 +32,14 @@ class BookingService {
   }
 
   async getBookingById(bookingId: string) {
-    const result = await db
+    const [result] = await db
       .select()
       .from(booking)
       .where(eq(booking.id, bookingId));
-    return result[0];
+    if (!result) {
+      throw new ResourceNotFound(`Booking with ID ${bookingId} not found`);
+    }
+    return result;
   }
 
   async getUserBookings(userId: string) {

@@ -1,6 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { db } from '../../../db';
 import { event } from '../../../db/schema/event';
+import { ResourceNotFound } from '../../../middlewares/error-middleware';
 
 class EventService {
   async createEvent(data: typeof event.$inferInsert) {
@@ -10,8 +11,11 @@ class EventService {
   }
 
   async getEventById(id: string) {
-    const result = await db.select().from(event).where(eq(event.id, id));
-    return result[0];
+    const [result] = await db.select().from(event).where(eq(event.id, id));
+    if (!result) {
+      throw new ResourceNotFound(`Event with ID ${id} not found`);
+    }
+    return result;
   }
 
   async getUserEvents(userId: string) {
@@ -19,7 +23,15 @@ class EventService {
   }
 
   async deleteEvent(eventId: string) {
-    return await db.delete(event).where(eq(event.id, eventId));
+    const [deleted] = await db
+      .delete(event)
+      .where(eq(event.id, eventId))
+      .returning();
+
+    if (!deleted) {
+      throw new ResourceNotFound(`Event with ID ${eventId} not found`);
+    }
+    return deleted;
   }
 
   async updateEvent(id: string, data: typeof event.$inferInsert) {
@@ -29,6 +41,9 @@ class EventService {
       .set(data)
       .where(eq(event.id, id))
       .returning();
+    if (!result) {
+      throw new ResourceNotFound(`Event with ID ${id} not found`);
+    }
     return result;
   }
 }

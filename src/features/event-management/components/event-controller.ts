@@ -15,6 +15,7 @@ import {
   UpdateEventDto,
   updateEventSchema,
 } from '../types/event-types';
+import z from 'zod';
 
 export async function getAllEvents(
   req: Request,
@@ -122,11 +123,7 @@ export async function updateEvent(
       data: updatedEvent,
     });
   } catch (error) {
-    if (error instanceof InvalidInput) {
-      res.json({ error: error.cause });
-    } else {
-      next(error);
-    }
+    next(error);
   }
 }
 export async function getUserEvents(
@@ -145,5 +142,7 @@ export async function getUserEvents(
         data: userEvents,
       });
     }
-  } catch (error) {}
+  } catch (error) {
+    next(error);
+  }
 }
