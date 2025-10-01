@@ -40,7 +40,7 @@ app.use(
 );
 
 app.use(limiter);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use(express.json());
 

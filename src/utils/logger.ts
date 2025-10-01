@@ -1,7 +1,7 @@
 import pino from 'pino';
 
 const logger = pino({
-  level: 'info',
+  level: 'warn',
   transport: {
     target: 'pino-pretty', // makes logs human-readable
   },

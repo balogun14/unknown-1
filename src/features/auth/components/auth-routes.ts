@@ -5,7 +5,7 @@ const router: Router = Router();
 
 /**
  * @swagger
- * /api/auth/sign-in/email:
+ * /api/auth/login:
  *   post:
  *     summary: Sign in with email
  *     tags:
@@ -27,11 +27,11 @@ const router: Router = Router();
  *       400:
  *         description: Invalid email or request
  */
-router.post('/sign-in/email', toNodeHandler(auth));
+router.post('/login', toNodeHandler(auth));
 
 /**
  * @swagger
- * /api/auth/sign-up/email:
+ * /api/auth/register:
  *   post:
  *     summary: Sign up with email, password, and name
  *     tags:
@@ -60,7 +60,7 @@ router.post('/sign-in/email', toNodeHandler(auth));
  *       400:
  *         description: Invalid input or user already exists
  */
-router.post('/sign-up/email', toNodeHandler(auth));
+router.post('/register', toNodeHandler(auth));
 
 /**
  * @swagger

@@ -98,7 +98,7 @@ router.put('/events/:eventId', requireAuth, updateEvent);
 
 /**
  * @swagger
- * /api/users/{userId}/events:
+ * /api/users/events:
  *   get:
  *     summary: Get all events created by a user
  *     tags:
@@ -114,5 +114,5 @@ router.put('/events/:eventId', requireAuth, updateEvent);
  *       200:
  *         description: A list of events created by the user
  */
-router.get('/users/:userId/events', getUserEvents);
+router.get('/users/events', getUserEvents);
 export default router;
