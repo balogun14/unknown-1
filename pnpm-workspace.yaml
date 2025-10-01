@@ -1,5 +1,0 @@
-onlyBuiltDependencies:
-  - '@prisma/engines'
-  - '@scarf/scarf'
-  - esbuild
-  - prisma
