@@ -6,7 +6,9 @@
   "scripts": {
     "start": "tsx watch ./src/server.ts",
     "lint": "eslint 'src/**/*.ts'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "drizzle-kit migrate",
+    "generate": "drizzle-kit generate:types"
   },
   "keywords": [],
   "author": "",
